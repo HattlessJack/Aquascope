@@ -1,0 +1,12 @@
+def createChart(fileName):
+        # Import the CSV pada using pandas
+        data = pd.read_csv('AquascopeData/' + str(fileName))
+
+        # Convert the "dates" column to datetime format
+        data['dates'] = pd.to_datetime(data['dates'])
+
+        # Set the "dates" column as the index of the DataFrame
+        data.set_index('dates', inplace=True)
+
+        # Display the line chart in Streamlit
+        st.line_chart(data['result'],x=None, y=None,width=0, height=0,  use_container_width=True)
